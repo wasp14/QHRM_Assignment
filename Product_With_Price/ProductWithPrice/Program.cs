@@ -8,7 +8,8 @@ namespace ProductWithPrice
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddScoped<ProductWithPrice.Models.ProductServiceImp>();
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -23,12 +24,19 @@ namespace ProductWithPrice
             app.UseStaticFiles();
 
             app.UseRouting();
+            // Add CORS configuration
+            app.UseCors(options =>
+            {
+                options.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
 
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller =Product}/{action=Index}");
 
             app.Run();
         }

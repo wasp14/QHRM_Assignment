@@ -6,7 +6,7 @@
 
          void Update(Product product);
 
-         void Delete(Product product);    
+         void Delete(int id);    
 
          IEnumerable<Product> GetAll();
 
