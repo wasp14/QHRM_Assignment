@@ -24,7 +24,7 @@ namespace ProductWithPrice.Controllers
         }
         // PUT: api/Product/{id}
         [HttpPut("{id}", Name = "UpdateProduct")]
-        public IActionResult Update(int id, [FromBody] Product product)
+        public IActionResult Update( [FromBody] Product product)
         {
             _productServiceImp.Update(product);
             return RedirectToAction("Index");

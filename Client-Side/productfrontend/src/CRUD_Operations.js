@@ -13,9 +13,11 @@ const CRUD_Operation =()=>
 {
 
     const [show, setShow] = useState(false);
+    const [show1, setShow1] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleShow1 = () => setShow(true);
 
   const[id, setId] = useState('');
   const[name, setName] = useState('');
@@ -72,7 +74,7 @@ const CRUD_Operation =()=>
 
     const handleUpdate=(id)=>
     {
-       handleShow();
+       handleShow1();
     }
     const handleAdd=()=>
     {
@@ -123,8 +125,12 @@ const CRUD_Operation =()=>
 
         if(window.confirm("Sure you want to delete this ProductInfo?")===true)
     {
-       axios.delete(url2).then((response)=>{
+       axios.delete(url2).then((result)=>{
+        if(result ===202)
+        {
+
             getData();
+        }
             });
     }
     }
@@ -166,7 +172,7 @@ const CRUD_Operation =()=>
       </tbody>
     </Table>
 
-    <Modal show={show} onHide={handleClose}>
+    <Modal show1={show1} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Update Product</Modal.Title>
         </Modal.Header>

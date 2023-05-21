@@ -24,7 +24,7 @@ namespace ProductWithPrice.Models
 
         public void Update(Product product)
         {
-            connection.Execute("UpdateProduct", product, commandType: CommandType.StoredProcedure);
+            connection.Execute("UpdateById", product, commandType: CommandType.StoredProcedure);
         }
 
         public void Delete(int id) 
